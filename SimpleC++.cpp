@@ -6,3 +6,6 @@ int main() {
     return 0;
 
 }
+
+//ctrl + shift + B 가compile및 빌드
+//ctrl + alt + B가 실행파일 실행!

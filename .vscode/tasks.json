@@ -1,14 +1,16 @@
 {
 	"version": "2.0.0",
+	"runner" : "terminal",
 	"tasks": [
+		//c++ 컴파일
 		{
-			"type": "cppbuild",
-			"label": "C/C++: g++.exe 활성 파일 빌드",
-			"command": "C:\\Program Files\\mingw-w64\\bin\\g++.exe",
+			"type": "shell",
+			"label": "g++ build",
+			"command": "g++",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"${file}",
+				"${fileDirname}\\**.cpp",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"
 			],
@@ -18,11 +20,31 @@
 			"problemMatcher": [
 				"$gcc"
 			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "컴파일러: \"C:\\Program Files\\mingw-w64\\bin\\g++.exe\""
+			"group": "build"
+			
+		},
+		//c컴파일
+		{
+			"label": "gcc build",
+			"type" : "shell",
+			"command" : "gcc",
+			"args" : [
+				"-g",
+				"${fileDirname}\\**.cpp",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+			],
+			"problemMatcher":["$gcc"],
+			"group":"build"
+		},
+		//실행
+		{
+			"label":"execute",
+			"command":"cmd",
+			"group":"test",
+			"args":[
+				"/C", "${fileDirname}\\${fileBasenameNoExtension}.exe"
+			]
 		}
 	]
 }
